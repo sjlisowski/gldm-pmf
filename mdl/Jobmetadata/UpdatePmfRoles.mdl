@@ -1,0 +1,7 @@
+ RECREATE Jobmetadata pmf_update_roles__c (
+  active (true),
+  label ('Update PMF Roles'),
+  description('Updates Regulatory and Plant Reviewer roles on PMFs based on changes to PMF User Role Setup records.'),
+  chunk_size(1),
+  job_code('Sdkjob.com.veeva.vault.custom.jobs.UpdatePmfRoles')
+ );

@@ -1,0 +1,70 @@
+##########################################################################
+# This data contains information about the Fields used by document type "Artwork".
+#
+# This information supports the automatic creation of new Drafts for approved Artwork files in
+# module "com.veeva.vault.custom.jobs.UpVersionArtworks.java"
+#
+# Each line consists of 2 or 3 bar(|)-delimited items:  
+#   - api name of the field
+#   - data type of the field
+#   - "required" if required  (don't include this element for non-required fields)
+#
+# Possible data types include:
+#   - "ObjectReference", for fields that reference an Object, such as Brand
+#   - "String", for text fields
+#   - "Picklist", for picklist fields
+#   - "Boolean", for Yes/No fields
+#   - "Date", for date fields
+#
+# The hash (#) symbol at the beginning of a line indicates a comment.  A line that contains a
+# hash symbol where the first character is not a hash symbol will result in an Exception being
+# raised.
+#
+# Blank lines are allowed for readability.
+#
+# This content is loaded into the "Artwork Fields" (artwork_fields__c) field of object
+# "VPROC Parameter Set" (vproc_parameter_set__c) in a record with the following field values:
+#   name__v: "pmf"
+#   parameters__c: "{}"
+#   artwork_fields__c: <contents of this file>
+#
+##########################################################################
+
+approval_deadline__c|Date|required
+barcode_number1__c|String
+barcode_type__c|Picklist
+circulation_target_date__c|Date|required
+cluster__c|ObjectReference|required
+cmointernal_production__c|ObjectReference
+country__v|ObjectReference
+creative_agency1__c|ObjectReference
+first_possible_production_date__c|Date|required
+formulation_code__c|ObjectReference
+global_code_sku_object__c|ObjectReference
+gtin__c|String
+is_a_creative_agency_being_used__c|Boolean
+job_type__c|Picklist|required
+legacy_migrated__c|Boolean
+legacy_number__c|String
+lifecycle__v|Picklist|required
+logistic_site__c|ObjectReference|required
+name__v|String|required
+ndcpic__c|String
+pack_languages__c|ObjectReference
+packaging_dimensions__c|String
+packaging_number__c|String
+packaging_type1__c|ObjectReference|required
+pmflaunch_number__c|Number
+procurement_group__c|String
+product__v|ObjectReference
+product_line__c|ObjectReference
+product_name_on_artwork__c|String
+regulatory_classification__c|Picklist|required
+serialization_required__c|Boolean
+submission_required__c|Boolean
+subtype__v|Picklist
+tags__c|ObjectReference
+title__v|String
+type__v|Picklist|required
+type_of_agency__c|Picklist
+variable_data__c|Picklist

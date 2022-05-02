@@ -1,0 +1,9 @@
+RECREATE Jobmetadata pmf_unlock_redline_artwork_documents__c (
+   label('Unlock PMF Redline Artwork Documents'),
+   active(true),
+   chunk_size(1),
+   single_instance_states(),
+   description('Set Redlined Artwork documents to the "Open" (draft__c) status for all Redline Artwork documents for a given PMF.'),
+   job_code('Sdkjob.com.veeva.vault.custom.jobs.UnlockRedlineArtworks'),
+   queue()
+   );

@@ -1,0 +1,7 @@
+ RECREATE Jobmetadata pmf_set_implementation_workflow_owner__c (
+  active (true),
+  label ('Set Implementation Workflow Owner'),
+  description('PMF. Sets the workflow owner for auto-started Implementation Workflows.  Chunk size MUST be 1 so that exceptions can be localized per document.'),
+  chunk_size(1),
+  job_code('Sdkjob.com.veeva.vault.custom.jobs.SetImplementationWorkflowOwner')
+ );

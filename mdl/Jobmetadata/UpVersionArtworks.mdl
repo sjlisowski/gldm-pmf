@@ -1,0 +1,7 @@
+ RECREATE Jobmetadata pmf_upversion_artwork_documents__c (
+  active (true),
+  label ('Up-Version Artwork Documents'),
+  description('Creates new Draft versions of a PMF's Impacted Artwork Documents. Chunk size MUST be 1 so that exceptions can be localized per document.'),
+  chunk_size(1),
+  job_code('Sdkjob.com.veeva.vault.custom.jobs.UpVersionArtworks')
+ );

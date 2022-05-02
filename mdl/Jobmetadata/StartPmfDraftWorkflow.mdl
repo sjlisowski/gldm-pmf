@@ -1,0 +1,9 @@
+RECREATE Jobmetadata pmf_start_pmf_draft_workflow__c (
+   label('Start PMF Draft Workflow'),
+   active(true),
+   chunk_size(1),
+   single_instance_states(),
+   description('Start the "PMF Draft" workflow for a newly created Draft of an approved Artwork document.'),
+   job_code('Sdkjob.com.veeva.vault.custom.jobs.StartPmfDraftWorkflow'),
+   queue()
+   );
