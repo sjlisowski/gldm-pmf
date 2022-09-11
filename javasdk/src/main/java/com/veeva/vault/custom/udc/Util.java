@@ -7,6 +7,7 @@ import com.veeva.vault.sdk.api.document.DocumentVersion;
 import com.veeva.vault.sdk.api.notification.NotificationMessage;
 import com.veeva.vault.sdk.api.notification.NotificationParameters;
 import com.veeva.vault.sdk.api.notification.NotificationService;
+import com.veeva.vault.sdk.api.query.QueryExecutionResult;
 import com.veeva.vault.sdk.api.query.QueryResponse;
 import com.veeva.vault.sdk.api.query.QueryResult;
 import com.veeva.vault.sdk.api.query.QueryService;
@@ -33,7 +34,8 @@ import java.util.Set;
   getRecordValue - Return a field value from an Object Record identified by the Record's ID.
   getTypeName - Return the API name of an object record's Object Type.
   getObjectTypeName - Return the Object Type name for the record.  Assumes the values passed as arguments are valid.
-  getRoleId - Return the object record ID from the Application Role object where the record is for the Regulatory role.
+  getRoleId - Return the object record ID from the Application Role object for the given role name.
+  getRoleName - Return the api name of the Application role for the given Application Role record ID.
   getUSCountryId - Return the record ID from the Country Object record for the United States.
   getSinglePicklistValue - Return the value from a single-pick picklist field, or null if the field value is null.
   stringifyFieldValues - Concatenates a field value across one or more records in a query response.
@@ -47,6 +49,7 @@ import java.util.Set;
   sendNotificationSimple - Send a simple notification email
   getUserFullName - Return the full name for a user based on the User's user ID.
   isVaultOwner - Return a boolean value to indicate whether a user has the Vault Owner Security Profile.
+  getCountriesInRegion - Return a list of Country object record ID's for records for the specified region.
  */
 
 @UserDefinedClassInfo
@@ -219,13 +222,23 @@ public class Util {
     }
 
   /**
-   * Return the object record ID from the Application Role object where the record is for the Regulatory role.
+   * Return the object record ID from the Application Role object for the given role name.
    * @return
    */
     public static String getRoleId(String roleName) {
       QueryService qs = ServiceLocator.locate(QueryService.class);
       QueryResponse qr = qs.query("select id from application_role__v where api_name__v = '"+roleName+"'");
       return qr.streamResults().iterator().next().getValue("id", ValueType.STRING);
+    }
+
+    /**
+     * getRoleName - Return the api name of the Application role for the given Application Role record ID.
+     */
+    public static String getRoleName(String applicationRoleRecordId) {
+      QueryExecutionResult queryResult = QueryUtil.queryOne(
+        "select api_name__v from application_role__v where id = '"+applicationRoleRecordId+"'"
+      );
+      return queryResult.getValue("api_name__v", ValueType.STRING);
     }
 
   /**
@@ -540,6 +553,26 @@ public class Util {
         .getValue("security_profile__sysr.profile_key__sys", ValueType.STRING);
 
       return profileKey.equals("vaultOwner");
+    }
+
+    /**
+     * Return a list of Country object record ID's for records where the Region
+     * field is set to the value passed as the argument.
+     * @param regionId
+     * @return
+     */
+    public static List<String> getCountriesInRegion(String regionId) {
+      List<String> countryIds = VaultCollections.newList();
+
+      Iterator<QueryExecutionResult> iter = QueryUtil.query(
+        "select id from country__v where region__c = '"+regionId+"'"
+      ).streamResults().iterator();
+
+      while (iter.hasNext()) {
+        countryIds.add(iter.next().getValue("id", ValueType.STRING));
+      }
+
+      return countryIds;
     }
 
 }
