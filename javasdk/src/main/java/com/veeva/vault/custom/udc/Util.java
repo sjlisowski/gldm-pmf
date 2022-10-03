@@ -50,6 +50,7 @@ import java.util.Set;
   getUserFullName - Return the full name for a user based on the User's user ID.
   isVaultOwner - Return a boolean value to indicate whether a user has the Vault Owner Security Profile.
   getCountriesInRegion - Return a list of Country object record ID's for records for the specified region.
+  equals - Return a boolean to indicate if 2 strings are equal
  */
 
 @UserDefinedClassInfo
@@ -573,6 +574,14 @@ public class Util {
       }
 
       return countryIds;
+    }
+
+    public static boolean equals(String string1, String string2) {
+      return (
+        (string1 == string2) ||
+        (string1 == null && string2 == null) ||
+        (string1 != null && string1.equals(string2))
+      );
     }
 
 }

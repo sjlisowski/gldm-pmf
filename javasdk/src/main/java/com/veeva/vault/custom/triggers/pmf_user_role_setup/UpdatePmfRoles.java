@@ -24,7 +24,8 @@ import java.util.List;
   events = {
     RecordEvent.AFTER_INSERT,
     RecordEvent.AFTER_UPDATE,
-    RecordEvent.AFTER_DELETE}
+    RecordEvent.AFTER_DELETE
+  }
 )
 public class UpdatePmfRoles implements RecordTrigger {
 
