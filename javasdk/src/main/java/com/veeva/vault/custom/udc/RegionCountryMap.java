@@ -13,14 +13,14 @@ import java.util.Map;
 /**
  * Helps to map regions and countries.
  *
- *   Find whether a Country is in a Region. 
+ *   Find whether a Country is in a Region.
  */
 
 @UserDefinedClassInfo
 public class RegionCountryMap {
 
     private Map<String, List<String>> regionMap;
-    
+
     public RegionCountryMap() {
 
       this.regionMap = VaultCollections.newMap();
